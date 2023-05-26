@@ -1,0 +1,4 @@
+#Median Filter
+dst3 = cv2.medianBlur(src,5)
+print("Median Filter")
+cv2_imshow(np.hstack((src, dst3)))
