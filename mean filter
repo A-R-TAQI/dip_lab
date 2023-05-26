@@ -1,0 +1,4 @@
+kernel = np.ones((10,10),np.float32)/25   
+dst2 = cv2.filter2D(src,-1,kernel)
+print("Mean Filter")
+cv2_imshow(np.hstack((src, dst2)))
