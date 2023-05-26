@@ -1,0 +1,51 @@
+import cv2
+from google.colab.patches import cv2_imshow
+import numpy as np
+import matplotlib.pyplot as plt
+
+src = cv2.imread("/content/drive/MyDrive/dip_lab/clrpncl.jfif", cv2.IMREAD_UNCHANGED)
+DF = cv2.edgePreservingFilter(src, flags=1, sigma_s=60, sigma_r=0.4)
+print("Domain Filter - Cartoonify")
+cv2_imshow(np.hstack((src, DF)))
+
+dst = cv2.GaussianBlur(src,(5,5),cv2.BORDER_DEFAULT)
+print("Gaussian Smoothing")
+cv2_imshow(np.hstack((src, dst)))
+
+kernel = np.ones((10,10),np.float32)/25   
+dst2 = cv2.filter2D(src,-1,kernel)
+print("Mean Filter")
+cv2_imshow(np.hstack((src, dst2)))
+
+#Median Filter
+dst3 = cv2.medianBlur(src,5)
+print("Median Filter")
+cv2_imshow(np.hstack((src, dst3)))
+
+#Bilateral filter 
+print("Bilateral Filter")
+dst4 = cv2.bilateralFilter(src, 60, 60, 60) 
+cv2_imshow(np.hstack((src, dst4)))
+
+#low pass filter
+Lp = cv2.filter2D(src,-1, kernel)
+Lp = src - Lp
+print("Low Pass")
+cv2_imshow(np.hstack((src, Lp)))
+
+Hp = src - dst
+filtered = Hp + 127*np.ones(src.shape, np.uint8)
+print("High Pass")
+cv2_imshow(np.hstack((src, Hp)))
+
+from google.colab.patches import cv2_imshow
+kernel = np.ones((10,10),np.float32)/25
+meanFilter = cv2.filter2D(src,-1,kernel)
+cv2_imshow(np.hstack((src, meanFilter)))
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+domainFilter = cv2.edgePreservingFilter(src, flags=1, sigma_s=60, sigma_r=0.6)
+cv2_imshow(np.hstack((domainFilter, Hp)))
+cv2.waitKey(0)
+cv2.destroyAllWindows()
