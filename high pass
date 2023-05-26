@@ -1,3 +1,7 @@
+import cv2
+from google.colab.patches import cv2_imshow
+import numpy as np
+import matplotlib.pyplot as plt
 Hp = src - dst
 filtered = Hp + 127*np.ones(src.shape, np.uint8)
 print("High Pass")
