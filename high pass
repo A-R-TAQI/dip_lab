@@ -1,0 +1,4 @@
+Hp = src - dst
+filtered = Hp + 127*np.ones(src.shape, np.uint8)
+print("High Pass")
+cv2_imshow(np.hstack((src, Hp)))
