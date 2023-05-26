@@ -1,0 +1,4 @@
+src = cv2.imread("/content/drive/MyDrive/dip_lab/clrpncl.jfif", cv2.IMREAD_UNCHANGED)
+DF = cv2.edgePreservingFilter(src, flags=1, sigma_s=60, sigma_r=0.4)
+print("Domain Filter - Cartoonify")
+cv2_imshow(np.hstack((src, DF)))
