@@ -1,0 +1,6 @@
+from google.colab.patches import cv2_imshow
+kernel = np.ones((10,10),np.float32)/25
+meanFilter = cv2.filter2D(src,-1,kernel)
+cv2_imshow(np.hstack((src, meanFilter)))
+cv2.waitKey(0)
+cv2.destroyAllWindows()
