@@ -1,3 +1,7 @@
+import cv2
+from google.colab.patches import cv2_imshow
+import numpy as np
+import matplotlib.pyplot as plt
 from google.colab.patches import cv2_imshow
 kernel = np.ones((10,10),np.float32)/25
 meanFilter = cv2.filter2D(src,-1,kernel)
