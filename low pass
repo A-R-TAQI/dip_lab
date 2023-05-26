@@ -1,0 +1,5 @@
+#low pass filter
+Lp = cv2.filter2D(src,-1, kernel)
+Lp = src - Lp
+print("Low Pass")
+cv2_imshow(np.hstack((src, Lp)))
