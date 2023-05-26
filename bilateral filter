@@ -1,0 +1,4 @@
+#Bilateral filter 
+print("Bilateral Filter")
+dst4 = cv2.bilateralFilter(src, 60, 60, 60) 
+cv2_imshow(np.hstack((src, dst4)))
